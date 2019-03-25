@@ -50,8 +50,6 @@ namespace wstd
 		template <class ret_type>
 		ret_type * get_function(std::string str_func)
 		{
-			std::cout << typeid(ret_type *).name() << std::endl;
-
 #ifdef _WIN32
 			return (reinterpret_cast<ret_type *>(GetProcAddress(win_handle_, str_func.c_str())));
 #else
