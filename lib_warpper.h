@@ -21,7 +21,7 @@ namespace wstd
 	class lib_warpper
 	{
 	public:
-		// æ‰“å¼€åº“æ–‡ä»¶
+		// ´ò¿ª¿âÎÄ¼ş
 		lib_warpper(std::string str_lib) 
 		{
 #ifdef _WIN32
@@ -35,7 +35,7 @@ namespace wstd
 #endif // _WIN32
 		}
 
-		// ç§»é™¤å¯¹åº”åº“æ–‡ä»¶
+		// ÒÆ³ı¶ÔÓ¦¿âÎÄ¼ş
 		virtual ~lib_warpper() 
 		{
 #ifdef _WIN32
@@ -50,6 +50,8 @@ namespace wstd
 		template <class ret_type>
 		ret_type * get_function(std::string str_func)
 		{
+			std::cout << typeid(ret_type *).name() << std::endl;
+
 #ifdef _WIN32
 			return (reinterpret_cast<ret_type *>(GetProcAddress(win_handle_, str_func.c_str())));
 #else
@@ -58,7 +60,7 @@ namespace wstd
 		}
 
 	private:
-		// ç»´æŒå¥æŸ„
+		// Î¬³Ö¾ä±ú
 #ifdef _WIN32
 		HMODULE win_handle_ = nullptr;
 #else
